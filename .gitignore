@@ -1,1 +1,9 @@
 **/test/
+
+**/build/
+
+.ccls-cache/
+
+.dir-locals.el
+
+**/compile_commands.json
