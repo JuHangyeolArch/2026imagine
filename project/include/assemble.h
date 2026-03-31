@@ -16,8 +16,8 @@ namespace ABCASM{
   private:
     void read();
     void trim_line();
-    void do_pass1();
-    void do_pass2();
+    void first_pass();
+    void second_pass();
     
     std::string file_path;
     std::vector<std::string> lines;

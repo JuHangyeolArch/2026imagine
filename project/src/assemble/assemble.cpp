@@ -11,7 +11,7 @@ namespace ABCASM{
   {
     this->read();
     this->trim_line();
-    
+    this->first_pass();
 
   }
 
@@ -31,7 +31,7 @@ namespace ABCASM{
     }
   }
 
-  void Assembler::do_pass1()
+  void Assembler::first_pass()
   {
     auto lc = 0;
     for (const auto &line : this->fined_lines)
@@ -42,26 +42,28 @@ namespace ABCASM{
 
       if (token.back() == ',')
       {
-	std::string label = token.substr(0, token.size() -1);
+	auto label = token.substr(0, token.size() -1);
         this->symbol_table.insert({label,lc});
 	++lc;
-	continue;
 
       }
       else if (token == "ORG")
       {
 	ss>>std::hex>>lc;
-	continue;
       }
 
       else if (token == "END")
       {
 	break;
       }
+      else
+      {
+	  ++lc;
+      }
     }
   }
 
-  void Assembler::do_pass2()
+  void Assembler::second_pass()
   {
 
 
