@@ -94,7 +94,7 @@ namespace AbcAsm{
       std::stringstream ss;
       auto unlab_line = remove_label(line);
       auto is_line = 0;
-      int16_t  val = 0;
+      uint16_t  val = 0;
 
       std::cout<<unlab_line<<" ->   ";
 
@@ -143,7 +143,7 @@ namespace AbcAsm{
     return line;
   }
 
-  int Assembler::handle_pseudo(const std::string &line, int &lc, int16_t &val,int &is_line)
+  int Assembler::handle_pseudo(const std::string &line, int &lc, uint16_t &val,int &is_line)
   {
     std::stringstream ss(line);
     std::string token;
@@ -180,7 +180,7 @@ namespace AbcAsm{
     return 1;
   }
   
-  int Assembler::handle_mri(const std::string &line, int16_t &val)
+  int Assembler::handle_mri(const std::string &line, uint16_t &val)
   {
     std::stringstream ss(line);
     std::string token;
@@ -221,7 +221,7 @@ namespace AbcAsm{
       return 0;
     }
   }
-  int Assembler::handle_nomri(const std::string &line, int16_t &val)
+  int Assembler::handle_nomri(const std::string &line, uint16_t &val)
   {
     std::stringstream ss(line);
     std::string token;

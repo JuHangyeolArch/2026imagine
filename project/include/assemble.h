@@ -10,6 +10,7 @@
 #include <vector>
 #include <unordered_map>
 #include <iomanip>
+#include <cstdint>
 
 namespace AbcAsm{
   class Assembler {
@@ -24,9 +25,9 @@ namespace AbcAsm{
     int sp_line(const std::string &source, std::string &dest, int &lc);
 
     std::string remove_label(const std::string &line);
-    int handle_pseudo(const std::string &line, int &lc, int16_t &val, int &is_line);
-    int handle_mri(const std::string &line, int16_t &val);
-    int handle_nomri(const std::string &line, int16_t &val);
+    int handle_pseudo(const std::string &line, int &lc, uint16_t &val, int &is_line);
+    int handle_mri(const std::string &line, uint16_t &val);
+    int handle_nomri(const std::string &line, uint16_t &val);
     
     std::string file_path;
     std::vector<std::string> lines;

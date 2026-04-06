@@ -3,7 +3,7 @@
 
 
 int main() {
-  auto asmblr = AbcAsm::Assembler("./b.asm");
+  auto asmblr = AbcAsm::Assembler("./a.asm");
 
   asmblr.run();
   
