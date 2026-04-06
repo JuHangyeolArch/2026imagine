@@ -1,0 +1,10 @@
+#include "vect_writer.h"
+
+
+namespace AbcAsm
+{
+
+  static int write(const std::string path, const std::vector<std::string> lines);
+
+
+}

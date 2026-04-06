@@ -12,7 +12,8 @@ set(ASSEMBLE_SOURCES
 src/assemble/assemble.cpp
 src/assemble/source_reader.cpp
 src/assemble/trimmer.cpp
-
+src/assemble/hextool.cpp
+src/assemble/vect_writer.cpp
 )
 
 

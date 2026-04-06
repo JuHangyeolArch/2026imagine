@@ -1,0 +1,19 @@
+
+#include "hextool.h"
+
+
+namespace AbcAsm{
+
+  int HexTool::ishexstr(const std::string &str)
+  {
+    
+    for (char c : str)
+    {
+      if(!std::isxdigit(c))
+	return false;
+    }
+    return true;
+  }
+
+
+}

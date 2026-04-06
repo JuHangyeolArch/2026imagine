@@ -1,0 +1,15 @@
+#pragma once
+#include <string>
+#include <cctype>
+
+namespace AbcAsm{
+
+  class HexTool
+  {
+  public:
+    static int ishexstr(const std::string &str);
+
+  };
+
+
+}

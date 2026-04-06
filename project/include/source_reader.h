@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 
-namespace ABCASM {
+namespace AbcAsm {
 
   class SourceReader {    
   public:
@@ -14,5 +14,6 @@ namespace ABCASM {
     
   private:
     std::vector<std::string> lines;
+    static int is_white_space(const std::string str);
   };
 }

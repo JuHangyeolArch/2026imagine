@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace ABCASM{
+namespace AbcAsm{
 
   class Trimmer {
   public:

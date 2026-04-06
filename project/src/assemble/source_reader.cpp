@@ -1,6 +1,7 @@
 #include "source_reader.h"
+#include <iostream>
 
-namespace ABCASM {
+namespace AbcAsm {
 
   SourceReader::SourceReader()
   {
@@ -18,15 +19,36 @@ namespace ABCASM {
     {
       while (std::getline(input_file,temp))
       {
-	this->lines.push_back(temp);
+        if (!this->is_white_space(temp))
+	{
+          this->lines.push_back(temp);
+        }
       }
 
-      return 0;
+      input_file.close();
+
+      return 1;
     }
     else
     {      
-      return 1;
+      return 0;
     }
+  }
+
+  int SourceReader::is_white_space(const std::string str)
+  {
+    if(!str.empty())
+    {
+      for (auto &c : str)
+      {
+        if (!std::isspace(c))
+	{
+	  return 0;
+	}
+      }
+    }
+
+    return 1;
   }
 
   SourceReader::operator std::vector<std::string>() const
