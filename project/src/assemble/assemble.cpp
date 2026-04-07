@@ -98,29 +98,34 @@ namespace AbcAsm{
 
       std::cout<<unlab_line<<" ->   ";
 
-      if (this->handle_pseudo(unlab_line, lc, val, is_line))
+      if (!this->handle_pseudo(unlab_line, lc, val, is_line))
       {
-	
-      }
-      else if (handle_mri(unlab_line,val))
-      {
-	is_line = 1;
-      }
-      else if (handle_nomri(unlab_line, val))
-      {
-	is_line = 1;
-      }
-      else if (HexTool::ishexstr(unlab_line))
-      {
-	is_line = 1;
-      }
-      else
-      {
-	std::cerr<<unlab_line<<std::endl<<"not valid memory address"<<std::endl;
+      
+	if (handle_mri(unlab_line,val))
+	{
+	  is_line = 1;
+	}
+	else if (handle_nomri(unlab_line, val))
+	{
+	  is_line = 1;
+	}
+	else if (HexTool::ishexstr(unlab_line))
+	{
+	  val = std::stoi(unlab_line,nullptr, 16);
+	  is_line =1;
+	}
+	else
+	{
+	  is_line = 0;
+	  std::cerr<<unlab_line<<std::endl<<"not valid instruction"<<std::endl;
+	}
       }
 
-      ss<<"@"<<std::hex<<std::setfill('0')<<std::setw(3)<<std::uppercase<<lc;
-      ss<<" "<<std::hex<<std::setfill('0')<<std::setw(4)<<std::uppercase<<val;
+      if(is_line)
+      {
+	ss<<"@"<<std::hex<<std::setfill('0')<<std::setw(3)<<std::uppercase<<lc;
+	ss<<" "<<std::hex<<std::setfill('0')<<std::setw(4)<<std::uppercase<<val;
+      }
       
       dest = ss.str();
 
@@ -163,14 +168,31 @@ namespace AbcAsm{
 	
     else if (token == "HEX")
     {
-      ss>>std::hex>>val;
-      is_line = 1;
+      ss>>token;
+      if(HexTool::ishexstr(token))
+      {
+	val = std::stoi(token,nullptr, 16);
+        is_line = 1;
+      }
+      else
+      {
+	std::cerr<<"not valid hex value"<<std::endl;
+      }
+	
     }
 
     else if (token == "DEC")
     {
-      ss>>val;
-      is_line = 1;
+      ss>>token;
+      if(DecTool::isdecstr(token))
+      {
+	val = std::stoi(token,nullptr, 10);
+        is_line = 1;
+      }
+      else
+      {
+	std::cerr<<"not valid dec value"<<std::endl;
+      }
     }
     else
     {
@@ -199,7 +221,7 @@ namespace AbcAsm{
 
         if (HexTool::ishexstr(token))
 	{
-
+	  val += std::stoi(token,nullptr, 16);
         }
 	else if (it != this->symbol_table.end())
 	{
@@ -207,7 +229,7 @@ namespace AbcAsm{
         }
 	else
 	{
-	  std::cerr<<"fuck you\n";
+	  std::cerr<<"not valid address"<<std::endl;
         }
 
 	ss>>token;

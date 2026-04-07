@@ -13,6 +13,7 @@ src/assemble/assemble.cpp
 src/assemble/source_reader.cpp
 src/assemble/trimmer.cpp
 src/assemble/hextool.cpp
+src/assemble/dectool.cpp
 src/assemble/vect_writer.cpp
 )
 

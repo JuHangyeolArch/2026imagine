@@ -4,6 +4,7 @@
 #include "vect_writer.h"
 #include "trimmer.h"
 #include "hextool.h"
+#include "dectool.h"
 
 #include <string>
 #include <sstream>
