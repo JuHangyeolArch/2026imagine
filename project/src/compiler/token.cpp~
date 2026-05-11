@@ -1,0 +1,50 @@
+#include <token.h>
+
+namespace TSMC {
+
+  enum class Token::Keyword {
+    INT,
+    IF,
+    ELSE,
+    WHILE,
+    RETURN
+  };
+
+  enum class Token::Operator {
+    PLUS,
+    MINUS,
+    STAR,
+    SLASH,
+    ASSIGN,
+    EQUAL
+  };
+
+  enum class Token::Symbols {
+    L_PARENTH,
+    R_PARENTH,
+    L_BRACE,
+    R_BRACE,
+    SEMIC,
+    COMMA
+  };
+
+
+  const std::unordered_map<std::string, Lexer::Keyword> Token::keyword_table = {
+    {"int", Keyword::INT}, {"if", Keyword::IF}, {""}
+
+
+  };  
+  const std::unordered_map<std::string, Lexer::Operator> Lexer::operator_table= {
+
+
+
+  };
+  const std::unordered_map<std::string, Lexer::Symbols> Lexer::symbols_table = {
+
+
+
+  };
+
+
+  
+}

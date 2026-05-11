@@ -1,0 +1,28 @@
+#pragma once
+
+#include <string>
+#include <unordered_map>
+
+namespace TSMC {
+
+  class Token {
+  public:
+    Token(const std::string &path);
+
+  private:
+    enum class Keyword;
+    enum class Operator;
+    enum class Symbols;
+    static const std::unordered_map<std::string, Keyword> keyword_table;
+    static const std::unordered_map<std::string, Operator> operator_table;
+    static const std::unordered_map<std::string, Symbols> symbols_table;
+  };
+
+  
+
+
+
+
+
+  
+}

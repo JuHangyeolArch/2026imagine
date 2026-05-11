@@ -15,14 +15,24 @@ src/assemble/trimmer.cpp
 src/assemble/hextool.cpp
 src/assemble/dectool.cpp
 src/assemble/vect_writer.cpp
+
+)
+
+set (COMPILER_SOURCES
+
+src/compiler/compiler.cpp
+src/compiler/lexer/lexer.cpp
+src/compiler/token.cpp
+
 )
 
 
-add_executable(abcasm src/main.cpp)
+add_executable(tsmc src/main.cpp)
 
-target_sources(abcasm
+target_sources(tsmc
 	PRIVATE
 		${MENU_SOURCES}
 		${ASSEMBLE_SOURCES}
+		${COMPILER_SOURCES}
 )
 

@@ -1,5 +1,12 @@
+#include "source_reader.h"
+#include "vect_writer.h"
+#include "trimmer.h"
+#include "hextool.h"
+#include "dectool.h"
 #include "assemble.h"
+#include <sstream>
 #include <iostream>
+#include <iomanip>
 
 namespace AbcAsm{
 
@@ -96,7 +103,7 @@ namespace AbcAsm{
       auto is_line = 0;
       uint16_t  val = 0;
 
-      std::cout<<unlab_line<<" ->   ";
+      std::cout<<line<<" ->   ";
 
       if (!this->handle_pseudo(unlab_line, lc, val, is_line))
       {
@@ -125,10 +132,9 @@ namespace AbcAsm{
       {
 	ss<<"@"<<std::hex<<std::setfill('0')<<std::setw(3)<<std::uppercase<<lc;
 	ss<<" "<<std::hex<<std::setfill('0')<<std::setw(4)<<std::uppercase<<val;
+	dest = ss.str();
       }
       
-      dest = ss.str();
-
       return is_line;
   }
 
@@ -141,7 +147,6 @@ namespace AbcAsm{
 
     if (temp.back() == ',')
     {
-      std::cout<<line.substr(0,ss.tellg())<<"   ";
       return Trimmer::trim(line.substr(ss.tellg()));
     }
 

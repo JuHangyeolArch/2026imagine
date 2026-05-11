@@ -1,16 +1,8 @@
 #pragma once
 
-#include "source_reader.h"
-#include "vect_writer.h"
-#include "trimmer.h"
-#include "hextool.h"
-#include "dectool.h"
-
 #include <string>
-#include <sstream>
 #include <vector>
 #include <unordered_map>
-#include <iomanip>
 #include <cstdint>
 
 namespace AbcAsm{
